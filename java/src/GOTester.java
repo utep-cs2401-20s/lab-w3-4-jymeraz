@@ -2,6 +2,19 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+
+/*you have to test that your implementation of the flat-like as well as of the torus-shaped games of life are correct.
+* You are expected to do so using JUnit testing, in a file called GOLTester.java
+* In this file, you have to test the following class methods of the GameOfLife type for GameOfLife and TorusGameOfLife objects.
+* (5 tests at least per method):
+* neighbors(int int)
+* oneStep()
+* evolution()*/
+
+/* How different do the tests have to be??
+*  Can I test the same array but checking the number of neighbors for different indices? Are those tests too similar?
+*  Can I also test the same array but with a different number of evolutions?
+* */
 public class GOTester {
   @Test
   public void testNeighbors1() {
@@ -116,8 +129,8 @@ public class GOTester {
   @Test
   public void testOneStep5() {
     int[][] a =
-        {{1, 1, 0},
-         {1, 0, 0}};
+        {{1, 1},
+         {1, 0}};
 
     GameOfLife testFour = new GameOfLife(a);
     testFour.oneStep();
