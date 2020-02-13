@@ -31,6 +31,7 @@ public class GameOfLife {
 
   // Getter returns the current board.
   public int[][] getBoard(){
+
     return this.board;
   }
 
