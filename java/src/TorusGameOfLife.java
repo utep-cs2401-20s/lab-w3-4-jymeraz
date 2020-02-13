@@ -4,6 +4,7 @@ public class TorusGameOfLife extends GameOfLife {
   public TorusGameOfLife(){ }
 
   // Constructor that takes size as input.
+  // Size will be the size of the board and previous.
   public TorusGameOfLife(int s){
     size = s;
     board = new int[size][size];
@@ -19,7 +20,7 @@ public class TorusGameOfLife extends GameOfLife {
     previous = new int[size][size];
 
     for(int i = 0; i < size; i++){
-      for(int j = 0; j < inputArray[i].length; j++){
+      for(int j = 0; j < size; j++){
         previous[i][j] = inputArray[i][j];
       }
     }
@@ -28,9 +29,8 @@ public class TorusGameOfLife extends GameOfLife {
   // Count the number of neighbors.
   @Override
   public int neighbors(int row, int col){
-    int neighborQuantity = 0;
-
-    neighborQuantity+=
+    // Return the summation of the values around the target.
+    return
         previous[(row - 1 + size) % size][(col - 1 + size) % size] +
         previous[(row - 1 + size) % size][(col) % size] +
         previous[(row - 1 + size) % size][(col + 1) % size] +
@@ -39,8 +39,5 @@ public class TorusGameOfLife extends GameOfLife {
         previous[(row + 1) % size][(col - 1 + size) % size] +
         previous[(row + 1) % size][(col) % size] +
         previous[(row + 1) % size][(col + 1) % size];
-
-    return neighborQuantity;
   }
-
 }

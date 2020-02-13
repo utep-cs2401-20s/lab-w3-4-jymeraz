@@ -7,6 +7,7 @@ public class GameOfLife {
   public GameOfLife(){ }
 
   // Constructor that takes size as input.
+  // Size will be the size of the board and previous.
   public GameOfLife(int s){
     size = s;
     board = new int[size][size];
@@ -33,8 +34,8 @@ public class GameOfLife {
     return this.board;
   }
 
+  // Implement the game of life rules.
   // Transforms the current board into the next shape.
-  // Updates the previous board to the current.
   public void oneStep(){
     for (int i = 0; i < previous.length; i++){
       for (int j = 0; j < previous[i].length; j++){
@@ -49,6 +50,7 @@ public class GameOfLife {
       }
     }
 
+    // Updates the previous board to the new state.
     for (int i = 0; i < previous.length; i++) {
       for (int j = 0; j < previous[i].length; j++) {
         previous[i][j] = board[i][j];
@@ -60,6 +62,8 @@ public class GameOfLife {
   public int neighbors(int row, int col){
     int neighborQuantity = 0;
 
+    // Check that the neighboring values will not go out of bounds.
+    // Return the summation of the values around the target.
     if (row == 0 && col == 0){
       return neighborQuantity = previous[row][col + 1] + previous[row + 1][col + 1] + previous[row + 1][col];
     } else if (row == 0 && col == previous[row].length - 1){
@@ -85,6 +89,16 @@ public class GameOfLife {
   public void evolution(int steps){
     for (int i = 1; i <= steps; i++){
       oneStep();
+    }
+  }
+
+  // Print the current state of the board.
+  public void printBoard(){
+    for (int i = 0; i < board.length; i++){
+      for (int j = 0; j < board[i].length; j++){
+        System.out.print(board[i][j]);
+      }
+      System.out.println();
     }
   }
 }
